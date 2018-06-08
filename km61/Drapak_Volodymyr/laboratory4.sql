@@ -30,3 +30,15 @@ BEGIN
     END LOOP;
 
 END;
+
+/*курсор параеметр название страни віводит имена студентов что пользуються операторами в єтой стране*/
+CURSOR num3(coutr IN Countries.country_name%TYPE,) IS
+    SELECT Students.student_name
+    FROM phoneNumbers
+    WHERE Countries.country_name = coutr ;
+BEGIN
+    coutrs := '&country_name';
+    FOR num IN num3(coutrs) LOOP
+        DBMS_OUTPUT.PUT_LINE(Students.student_name);
+    END LOOP;
+END;
